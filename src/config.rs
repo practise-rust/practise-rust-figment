@@ -32,6 +32,7 @@ pub fn load_config() -> Result<Config> {
         .merge(Toml::file("config/default.toml"))
         .merge(Toml::file("config/local.toml"))
         .merge(Yaml::file("config/prod.yaml"))
+        // export APP_DATABASE_URL=postgres://postgres:password@localhost:5432/realworld
         .merge(Env::prefixed("APP_").split("_"))
         .extract();
 
